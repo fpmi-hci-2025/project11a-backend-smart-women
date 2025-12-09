@@ -42,3 +42,11 @@ jobs:
       run: |
         echo "Backend is ready for deployment to Render.com"
         echo "Add RENDER_API_KEY secret to deploy automatically"
+
+    - name: Deploy to Render
+      if: github.ref == 'refs/heads/main'
+      env:
+        RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+      run: |
+        echo "🚀 Starting deployment to Render.com"
+        echo "Backend deployment would be triggered automatically via Render.com webhook"
